@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: FreedomCFErrorFilter
+## Author: Malz
+## Version: 0.2
+## Notes: Blocks spam of cross-faction system errors |nwith love from Malz
+## X-Website: http://github.com/wow-nostalgia
+## X-Category: Chat/Communication
+## DefaultState: enabled
+
+FreedomCFErrorFilter.lua
