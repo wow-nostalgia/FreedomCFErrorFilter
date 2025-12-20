@@ -6,5 +6,6 @@
 ## X-Website: http://github.com/wow-nostalgia
 ## X-Category: Chat/Communication
 ## DefaultState: enabled
+## RequiredDeps: !!!ClassicAPI
 
 FreedomCFErrorFilter.lua
