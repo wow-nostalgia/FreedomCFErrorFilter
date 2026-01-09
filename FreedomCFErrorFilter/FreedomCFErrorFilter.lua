@@ -1,32 +1,33 @@
-local filterChatErrors = true
-
 if not C_Timer then
     C_Timer = {}
 end
 
-do
-    local timers = {}
-    local frame = CreateFrame("Frame")
+if not C_Timer.After then
+    do
+        local timers = {}
+        local frame = CreateFrame("Frame")
 
-    frame:SetScript("OnUpdate", function(self, elapsed)
-        for i = #timers, 1, -1 do
-            local t = timers[i]
-            t.delay = t.delay - elapsed
-            if t.delay <= 0 then
-                table.remove(timers, i)
-                pcall(t.func)
+        frame:SetScript("OnUpdate", function(self, elapsed)
+            for i = #timers, 1, -1 do
+                local t = timers[i]
+                t.delay = t.delay - elapsed
+                if t.delay <= 0 then
+                    table.remove(timers, i)
+                    pcall(t.func)
+                end
             end
-        end
-    end)
+        end)
 
-    function C_Timer.After(delay, func)
-        if type(delay) ~= "number" or type(func) ~= "function" then
-            return
+        function C_Timer.After(delay, func)
+            if type(delay) ~= "number" or type(func) ~= "function" then
+                return
+            end
+            table.insert(timers, { delay = delay, func = func })
         end
-        table.insert(timers, { delay = delay, func = func })
     end
 end
 
+local filterChatErrors = true
 
 local orig_SendChatMessage = SendChatMessage
 
